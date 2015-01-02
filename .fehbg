@@ -1,0 +1,6 @@
+#
+# ~/.fehbg
+# 
+# obviously substitute background for "wallhaven.jpg"
+
+feh  --bg-scale '/home/eyestrain/.fluxbox/backgrounds/wallhaven.jpg' 
