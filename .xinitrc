@@ -15,6 +15,6 @@ xcompmgr -c &
 
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources &&
 
-fbsetbg /home/eyestrain/.fluxbox/backgrounds/grass.jpg
+fbsetbg /home/eyestrain/.fluxbox/backgrounds/birdie.jpg
 
 exec fluxbox
