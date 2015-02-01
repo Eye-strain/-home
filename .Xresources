@@ -8,42 +8,51 @@ xterm*termName: xterm-color
 xterm*eightBitInput: false
 
 URxvt*scrollBar: 	false
-URxvt*letterSpace: 	-1
+URxvt*letterSpace: 	0
 URxvt*scrollTtyOutput:	true
 URxvt*geometry:		80x30
 
 !BLK Cursor
-#define _color0        #0033CC
-#define _color8        #0033CC
+#define _color0        #5E83F2
+#define _color8        #5E83F2
 !RED Tag
-#define _color1        #FF0000
-#define _color9        #FF0000
+#define _color1        #D62D2D
+#define _color9        #D62D2D
 !GRN SpecialKey
-#define _color2        #33cc33
-#define _color10       #33cc33
+#define _color2        #2E9C2E
+#define _color10       #2E9C2E
 !YEL Keyword
 #define _color3        #CC6600
 #define _color11       #CC6600
 !BLU Number
-#define _color4        #005CE6
-#define _color12       #005CE6
+#define _color4        #5E83F2
+#define _color12       #5E83F2
 !MAG Precondit
-#define _color5        #c0bed1
-#define _color13       #c0bed1
+#define _color5        #9791C9
+#define _color13       #9791C9
 !CYN Float
-#define _color6        #FF9900
-#define _color14       #FF9900
-!WHT Search
-#define _color7        #efefef
-#define _color15       #efefef
+#define _color6        #79522b
+#define _color14       #79522b
+!WHT Search (JAPAN)
+!#define _color7        #eeb872
+!#define _color15       #eeb872
+!WHT Search (MATTE)	
+#define _color7		#BFBFBF
+#define _color15	#BFBFBF
 !FMT Include, StatusLine, ErrorMsg
-#define _colorBD       #FF9900
-#define _colorUL       #00CC00
-#define _colorIT       #00CCFF
+#define _colorBD       #79522b
+#define _colorUL       #2E9C2E
+#define _colorIT       #5E83F2
 !TXT Normal, Normal, Cursor
-#define _foreground    #dcdccc
-#define _background    #000000
-#define _cursorColor   #BFBFBF
+!FOR JAPAN THEME: 
+!#define _foreground    #eeb872
+!#define _background    #221e1f
+!#define _cursorColor   #eeb872
+!FOR MATTE THEME:
+#define _foreground	#BFBFBF
+#define _background	#000000
+#define _cursorColor	#BFBFBF
+
 URxvt*color0         : _color0
 URxvt*color1         : _color1
 URxvt*color2         : _color2
@@ -88,3 +97,5 @@ XTerm*colorUL        : _colorUL
 XTerm*foreground     : _foreground
 XTerm*background     : _background
 XTerm*cursorColor    : _cursorColor
+
+Xcursor.theme:       OpenZone_Black
