@@ -1,30 +1,41 @@
-#!/bin/bash
-#
-# ~/.xinitrc
-#
-# Executed by startx (run your window manager from here)
+#!/bin/sh
 
-if [ -d /etc/X11/xinit/xinitrc.d ]; then
-  for f in /etc/X11/xinit/xinitrc.d/*; do
-    [ -x "$f" ] && . "$f"
-  done
-  unset f
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
+
+# merge in defaults and keymaps
+
+if [ -f $sysresources ]; then
+
+    xrdb -merge $sysresources
+
 fi
 
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources &&
+if [ -f $sysmodmap ]; then
+    xmodmap $sysmodmap
+fi
 
-## uncomment all three below for fluxbox
-#xcompmgr -c &
-#fbsetbg /home/eyestrain/.fluxbox/backgrounds/birdie.jpg
-#exec fluxbox
+if [ -f "$userresources" ]; then
 
-#exec enlightenment_start
+    xrdb -merge "$userresources"
 
-#exec env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic    
-#exec gnome-session
+fi
+
+if [ -f "$usermodmap" ]; then
+    xmodmap "$usermodmap"
+fi
+
+# start some nice programs
+
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x "$f" ] && . "$f"
+ done
+ unset f
+fi
 
 sh ~/.fehbg &
 
 exec i3
-## if logging (note - caused and issue on 2/1 where kept restarting after login screen):
-#exec i3 -V >> ~/.i3/i3log-$(date +'%F-%k-%M-%S') 2>&1
