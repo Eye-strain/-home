@@ -5,13 +5,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-xrdb ~/.Xresources &&
-
 alias ls='ls -al -h --color=auto'
-alias mocp='mocp -T darkdot_theme'
+alias uzbl='uzbl-tabbed'
+alias youtube='youtube-dl --extract-audio --audio-format mp3'
 
-export PS1="\[\e[00;37m\]\w \[\e[0m\]\[\e[01;37m\][\[\e[0m\]\[\e[00;37m\]\\$\[\e[0m\]\[\e[01;37m\]]\[\e[0m\]\[\e[00;37m\]: \[\e[0m\]"
+PS1='[\u@\h \W]\$ '
 
 export EDITOR=nano
 
-#conky &
+export PS1="\[\e[00;37m\]\w \[\e[0m\]\[\e[01;37m\][\[\e[0m\]\[\e[00;37m\]\\$\[\e[0m\]\[\e[01;37m\]]\[\e[0m\]\[\e[00;37m\]: \[\e[0m\]"
