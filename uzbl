@@ -135,7 +135,7 @@ set title_format_long = \@keycmd_prompt \@raw_modcmd \@raw_keycmd \@TITLE - Uzbl
 # Progress bar config
 # %d = done, %p = pending %c = percent done, %i = int done, %s = spinner,
 # %t = percent pending, %o = int pending, %r = sprite scroll
-set progress.width      = 8
+set progress.width      = 10
 set progress.format     = [%d>%p]%c
 set progress.done       = =
 set progress.pending    =
