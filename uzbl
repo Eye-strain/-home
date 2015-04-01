@@ -97,16 +97,20 @@ set download_handler    = sync_spawn @scripts_dir/download.sh
 # Custom CSS can be defined here, including link follower hint styles
 set stylesheet_uri = file://@config_home/uzbl/style.css
 
-set tab_colours = foreground = "#606060" background = "#000000" font = "GohuFont" font_size='large'
+set tab_colours = foreground = "#FFFFFF" background = "#000000" font = "GohuFont" font_size = "large"
+set tab_text_colours = foreground = "#606060" background = "#000000" font = "GohuFont" font_size = "large"
 
-set selected_tab_text = font = "GohuFont" font_size='large' foreground = "#4682B4"
-#set selected_tab_text = foreground = "#4682B4"
-set selected_tab = font = "GohuFont" font_size='large' background = "#000000" foreground = "#FFFFFF"
+set selected_tab_text = font = "GohuFont" font_size = "large" foreground = "#4682B4"
+set selected_tab = foreground = "#FFFFFF" background = "#000000" font = "GohuFont" font_size= "large"
+
+set https_colours = foreground = "#FFFFFF" background = "#000000" font = "GohuFont" font_size = "large"
+set https_text_colours = foreground = "#606060" background = "#000000" font = "GohuFont" font_size = "large" font_weight = "bold"
+set selected_https = foreground = "#FFFFFF" background = "#000000" font = "GohuFont" font_size = "large" font_weight = "bold"
+set selected_https_text = foreground = "#4682B4" background = "#000000" font = "GohuFont" font_size = "large" font_weight = "bold"
 
 set show_status       = 1
 set status_top        = 0
 set status_background = #000000
-#set status_background = #303030
 
 set modcmd_style      = weight="bold" foreground="red"
 set keycmd_style      = weight="light" foreground="red"
@@ -115,11 +119,11 @@ set cursor_style      = underline="single"
 set completion_style  = foreground="blue"
 set hint_style        = weight="bold"
 
-set mode_section      = <span background="khaki" foreground="black">[\@[\@mode_indicator]\@]</span>
+#mode_section background was "khaki"
+set mode_section      = <span background="#4682B4" foreground="black">[\@[\@mode_indicator]\@]</span>
 set keycmd_section    = [<span \@prompt_style>\@[\@keycmd_prompt]\@</span><span \@modcmd_style>\@modcmd</span><span \@keycmd_style>\@keycmd</span><span \@completion_style>\@completion_list</span>]
 set progress_section  = <span foreground="#606060">\@[\@progress.output]\@</span>
 set scroll_section    = <span foreground="#606060">\@[\@scroll_message]\@</span>
-#set uri_section       = <span foreground="#99FF66">\@[\@uri]\@</span>
 set uri_section       = <span foreground="#4682B4">\@[\@uri]\@</span>
 set name_section      = <span foreground="khaki">\@[\@NAME]\@</span>
 set status_section    = <span foreground="blue">\@status_message</span>
@@ -441,9 +445,7 @@ set stack    = @mode_config stack
 
 # Command mode config.
 @command keycmd_style = foreground="#4682B4"
-#@command  keycmd_style        = foreground="red"
 @command status_background = #000000
-#@command  status_background   = #202020
 @command  mode_indicator      = Cmd
 @command  keycmd_events       = 1
 @command  forward_keys        = 0
@@ -451,7 +453,6 @@ set stack    = @mode_config stack
 
 # Insert mode config.
 @insert status_background = #000000
-#@insert   status_background   = #303030
 @insert   mode_indicator      = Ins
 @insert   forward_keys        = 1
 @insert   keycmd_events       = 0
@@ -459,7 +460,6 @@ set stack    = @mode_config stack
 
 # Multi-stage-binding mode config.
 @stack keycmd_style = foreground="#4682B4"
-#@stack    keycmd_style        = foreground="red"
 @stack    status_background   = #202020
 @stack    mode_indicator      = Bnd
 @stack    prompt_style        = foreground="#888" weight="light"
