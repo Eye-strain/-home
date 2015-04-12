@@ -1,0 +1,13 @@
+#
+# ~/.mailrc
+#
+
+set smtp-use-starttls
+set nss-config-dir=~/.mozilla/firefox/16i5f1bq.default
+set ssl-verify=ignore
+set smtp=smtp://smtp.gmail.com:587
+set smtp-auth=login
+set smtp-auth-user=m.krzystek@gmail.com
+set smtp-auth-password=ripped303wiener
+set from="m.krzystek@gmail.com (Archy)"
+
