@@ -1,0 +1,69 @@
+#
+# command line cheat sheet
+#
+
+# installing packages
+
+download tarball
+tar -xvf <filename>
+cd to PKBUILD directory
+makepkg -s
+
+# mounting USB with full read/write permission
+
+sudo mount -ouser,umask=0000 /dev/sdb[X] ~/mnt/USB
+
+# searching for files
+
+find ~ -name "*.jpg" (all jpg files in home directory and subdirs)
+find ~ -iname "*.jpg" (same, but ignore case)
+find ~ -name 'abc*' ! -name '*.jpg' (find files start w/abc, but not jpgs)
+find ~ -name '*.php' -o -name '*.jpg' (find php OR jpg files)
+find ~ -type f -name "abc*" (only search for files)
+find ~ -type d -name "abc*" (only search for directories)
+find /etc/var /var/log -type f -name "abc*" (search two directories)
+find ~ -type f -name ".*" (search for hidden files)
+find /bin -maxdepth 2 -perm /a=x (find exec files w/i 2 levels of /bin)
+find ~ -mtime 50 (find files modified last 50 days)
+find ~ -atime 50 (find files accessed last 50 days)
+find ~ -mtime +50 -mtime -100 (find files modified b/w 50 and 100 days ago)
+find ~ -cmin -60 (find files changed in last 60 minutes)
+find ~ -mmin -60 (find files modified in last hour)
+find ~ -amin -60 (find files accessed in last hour)
+find ~ -size 50M (find all 50MB files)
+find ~ -size +50M - size -100M (find files b/w 50M and 100M in size)
+find ~ -type f -empty (find all empty files (use -type d for directories))
+find ~ -exec ls -al -h --color=auto {} \; (list all found files in ls format)
+find ~ -type f -name "*.txt" -exec rm -f {} \; (delete all found files)
+
+# symbolic links
+
+ln -s /path/to/where/file/located/filename.sh filename.sh (will create link "filename.sh" in present directory pointing to file in path)
+
+# screen brightness
+
+xrandr --output eDP --brightness <value from 0.0 to 1.0>
+
+# android/nexus mounting
+plug in and make sure screen is unlocked
+jmtpfs ~/mnt/android
+to unmount: fusermount -u ~/mnt/android
+
+# analyzing boot time
+
+systemd-analyze
+systemd-analyze blame (more detailed)
+systemd-analyze critical-chain
+
+# musik
+#
+# load mpd daemon and specify config file
+
+mpd ~/.config/mpd/mpd.conf
+ncmpcpp
+
+# extract mp3 audio from youtube url
+
+youtube-dl --extract-audio --audio-format mp3 <video url>
+
+
