@@ -8,6 +8,6 @@ set ssl-verify=ignore
 set smtp=smtp://smtp.gmail.com:587
 set smtp-auth=login
 set smtp-auth-user=m.krzystek@gmail.com
-set smtp-auth-password=ripped303wiener
+set smtp-auth-password=turnthe303page
 set from="m.krzystek@gmail.com (Archy)"
 
