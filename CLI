@@ -13,6 +13,10 @@ makepkg -s
 
 sudo mount -ouser,umask=0000 /dev/sdb[X] ~/mnt/USB
 
+# creating bootable USB (do not mount USB)
+
+dd bs=4M if=/path/to/archlinux.iso of=/dev/sd<x> && sync
+
 # searching for files
 
 find ~ -name "*.jpg" (all jpg files in home directory and subdirs)
