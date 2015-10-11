@@ -14,13 +14,19 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:GohuFont 14
+
+font pango:terminus 11
+
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
+
+# launch i3lock
+
+exec xautolock -time 10 -locker '~/.i3/i3lock.sh'
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -32,6 +38,9 @@ set $right semicolon
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod1
 
+# focus does not follow mouse
+focus_follows_mouse no
+
 # start a terminal
 bindsym Mod1+Return exec i3-sensible-terminal
 
@@ -40,6 +49,10 @@ bindsym Mod1+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym Mod1+d exec dmenu_run
+
+# manually lock screen
+bindsym Control+Mod1+l exec i3lock
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -102,36 +115,64 @@ bindsym Mod1+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym Mod1+minus scratchpad show
 
-# switch to workspace
+# assign workspace variables
+set $WS1 
+set $WS2 
+#set $WS1 URxvt
+#set $WS2 Chromium
+set $WS3 Sublime
+set $WS4 LibreOffice
+#set $WS5 5
+set $WS5 
+set $WS6 6
+set $WS7 7
+set $WS8 8
+set $WS9 9
+set $WS10 10
 
-bindsym Mod1+1 workspace 1
-bindsym Mod1+2 workspace 2
-bindsym Mod1+3 workspace 3
-bindsym Mod1+4 workspace 4
-bindsym Mod1+5 workspace 5
-bindsym Mod1+6 workspace 6
-bindsym Mod1+7 workspace 7
-bindsym Mod1+8 workspace 8
-bindsym Mod1+9 workspace 9
-bindsym Mod1+0 workspace 10
+# switch to workspace
+bindsym mod1+1 workspace $WS1
+bindsym mod1+2 workspace $WS2
+bindsym mod1+3 workspace $WS3
+bindsym mod1+4 workspace $WS4
+bindsym mod1+5 workspace $WS5
+bindsym mod1+6 workspace $WS6
+bindsym mod1+7 workspace $WS7
+bindsym mod1+8 workspace $WS8
+bindsym mod1+9 workspace $WS9
+bindsym mod1+0 workspace $WS10
 
 # move focused container to workspace
+bindsym mod1+Shift+1 move container to workspace $WS1
+bindsym mod1+Shift+2 move container to workspace $WS2
+bindsym mod1+Shift+3 move container to workspace $WS3
+bindsym mod1+Shift+4 move container to workspace $WS4
+bindsym mod1+Shift+5 move container to workspace $WS5
+bindsym mod1+Shift+6 move container to workspace $WS6
+bindsym mod1+Shift+7 move container to workspace $WS7
+bindsym mod1+Shift+8 move container to workspace $WS8
+bindsym mod1+Shift+9 move container to workspace $WS9
+bindsym mod1+Shift+0 move container to workspace $WS10
 
-bindsym Mod1+Shift+1 move container to workspace 1
-bindsym Mod1+Shift+2 move container to workspace 2
-bindsym Mod1+Shift+3 move container to workspace 3
-bindsym Mod1+Shift+4 move container to workspace 4
-bindsym Mod1+Shift+5 move container to workspace 5
-bindsym Mod1+Shift+6 move container to workspace 6
-bindsym Mod1+Shift+7 move container to workspace 7
-bindsym Mod1+Shift+8 move container to workspace 8
-bindsym Mod1+Shift+9 move container to workspace 9
-bindsym Mod1+Shift+0 move container to workspace 10
+## float
+
+for_window [class="URxvt"] floating enable,move absolute center
+#for_window [class="Chromium"] floating enable,move absolute center
+
+#floating enable
+for_window [title="File Operation Progress" class="Thunar"] floating enable
+for_window [window_role="pop-up"] floating enable,move absolute center
+
+#assign [instance="URxvt"] $WS1
+assign [class="Chromium"] $WS2
+assign [class="sublime"] $WS3
 
 # reload the configuration file
 bindsym Mod1+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym Mod1+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -139,10 +180,6 @@ bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym $left       resize shrink width 10 px or 10 ppt
         bindsym $down       resize grow height 10 px or 10 ppt
         bindsym $up         resize shrink height 10 px or 10 ppt
@@ -164,25 +201,23 @@ bindsym Mod1+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+
+strip_workspace_numbers yes
+
 colors {
 
-	background #000000
-	statusline #ffffff
-	separator  #606060
+	background #282828
+	statusline #ebdbb2
+	separator  #918273
 
-#			   border  middle  text
+#		           border  middle  text
 
-#	focused_workspace  #606060 #5E83F2 #000000
-#	inactive_workspace #5E83F2 #606060 #000000
-
-
-	focused_workspace  #606060 #F4A460 #000000
-#	focused_workspace  #4c7899 #285577 #ffffff
-#	active_workspace   #333333 #5f676a #ffffff
-	inactive_workspace #606060 #000000 #F4A460
+	focused_workspace  #ebdbb2 #458588 #ebdbb2
+	inactive_workspace #282828 #282828 #918273
+#	active_workspace   #333333 #918273 #F4A460
 #	urgent_workspace   #2f343a #900000 #ffffff
-}
 
+}
         status_command i3status
 }
 
@@ -192,10 +227,10 @@ colors {
 ##
 ##
 
-# $mod+i loads firefox
+# $mod+i loads chromium
 
-bindsym Mod1+i exec firefox
-bindsym Mod1+z exec uzbl-tabbed
+bindsym Mod1+i exec chromium --incognito
+bindsym Mod1+z exec atom
 
 ## for all windows
 for_window [class="^.*"] border pixel 2
@@ -203,19 +238,15 @@ for_window [class="^.*"] border pixel 2
 
 ## URxvt always floats
 for_window [class="URxvt"] floating enable
+#for_window [class="Chromium"] floating enable
 
 # colors
 
-set $sand  #F4A460
-#set $blue #5562B4
-set $gray1 #606060
-#set $gray2 #333333
-#client.focused            $blue    $blue    #FFFFFF   #333333
-#client.focused_inactive   $gray2   $gray2   #FFFFFF   #000000
-#client.unfocused          $gray2   $gray2   #FFFFFF   #000000
+set $gray1 #918273
+set $white #FFFFFF
 
-set $bg	#000000
-set $fg #9f9f9f
+set $bg	#282828
+set $fg #ebdbb2
 set $hi #efef8f
 set $ac #494949
 #set $ac #a0afa0
@@ -229,9 +260,9 @@ set $id #606060
 #set $id #5E83F2
 set $ce $ceecee
 
-#			border	background	text	indicator
-#client.focused		#FFFFFF #FFFFFF		$tx	$sand
-client.focused		$gray1	$gray1		$tx	$sand
+#		        border	background	text	indicator
+
+client.focused		$gray1	$gray1		$tx	$bg
 client.unfocused	$bg	$bg		$ia	$id
 client.focused_inactive	$bg	$bg		$ac	$id
 client.urgent		$rd	$rd		$tx	$id
@@ -246,4 +277,4 @@ client.urgent		$rd	$rd		$tx	$id
 #
 # Please remove the following exec line:
 #######################################################################
-exec i3-config-wizard
+#exec i3-config-wizard

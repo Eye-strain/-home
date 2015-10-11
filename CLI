@@ -1,5 +1,5 @@
 #
-# command line cheat sheet April 11, 2015 21:43
+# command line cheat sheet September 12, 2015 21:43
 #
 
 # installing packages
@@ -8,6 +8,27 @@ download tarball
 tar -xvf <filename>
 cd to PKBUILD directory
 makepkg -s
+
+# setting up printer
+
+pacman -S libcups cups ghostscript gsfonts
+systemctl enable org.cups.cupsd.service
+systemctl start org.cups.cupsd.service
+pacman -S gutenprint
+
+go to AUR and download cups-bjnp
+tar -xvf
+makepkg -s
+
+pacman -U cups-bjnp-2.0-1-x86_64.pkg.tar.xv (or whatever the new pkg is)
+
+http://localhost:631
+
+use the bjnp setting: bjnp://192.168.1.123:8611
+
+# possible hint for troubleshooting:
+
+/var/spool/cups
 
 # mounting USB with full read/write permission
 
@@ -67,7 +88,35 @@ mpd ~/.config/mpd/mpd.conf
 ncmpcpp
 
 # extract mp3 audio from youtube url
+# NOTE: aliased to "youtube" ~$ youtube <url>
 
 youtube-dl --extract-audio --audio-format mp3 <video url>
 
+# get external IP
+
+curl -s http://whatismijnip.nl |cut -d " " -f 5
+curl -s icanhazip.com
+
+# scan for networks
+sudo iw wlp2s0 scan | grep -i ssid --color
+
+# updating mirrorlist
+reflector --verbose --country 'United States' -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist
+
+# clean up package cache (deletes all but last 3 versions of packages)
+paccache -r
+# clean up package cache of uninstalled packages
+paccache -ruk0
+
+# Webcam kernal module disabled (see /etc/modprobe.d/nocam.conf - 
+# just delete the file to enable the module
+
+# PRINTER
+# check print queue
+
+lpq -a
+
+# clear print queue
+
+cancel Canon_MX860_series-1 # will cancel job 1
 
