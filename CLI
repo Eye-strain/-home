@@ -101,6 +101,7 @@ curl -s icanhazip.com
 sudo iw wlp2s0 scan | grep -i ssid --color
 
 # updating mirrorlist
+# aliased to "reflector"
 reflector --verbose --country 'United States' -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist
 
 # clean up package cache (deletes all but last 3 versions of packages)
@@ -119,4 +120,13 @@ lpq -a
 # clear print queue
 
 cancel Canon_MX860_series-1 # will cancel job 1
+
+## copying files over ssh
+
+# copy from B to A while logged in to  B (push a file)
+scp /path/to/file username@a:/path/to/destination
+
+# copy from B to A while logged in to A (pull a file)
+scp username@b:/path/to/file /path/to/destination
+
 

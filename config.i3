@@ -26,8 +26,6 @@ font pango:terminus 11
 
 # launch i3lock
 
-exec xautolock -time 10 -locker '~/.i3/i3lock.sh'
-
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 set $up l
@@ -42,13 +40,19 @@ floating_modifier Mod1
 focus_follows_mouse no
 
 # start a terminal
-bindsym Mod1+Return exec i3-sensible-terminal
+#bindsym Mod1+Return exec i3-sensible-terminal
+bindsym Mod1+Return exec urxvt
 
 # kill focused window
 bindsym Mod1+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym Mod1+d exec dmenu_run
+# start rofi (a program launcher)
+bindsym Mod1+d exec --no-startup-id rofi -show run -font "terminus 11" -fg "#ebdbb2" -bg "#282828" -bc "#918273" -hlbg "#918273" -hlfg "#282828" -lines 10
+bindsym Mod1+s exec --no-startup-id rofi -show ssh -font "terminus 11" -fg "#ebdbb2" -bg "#282828" -bc "#918273" -hlbg "#918273" -hlfg "#282828" -lines 10
+
+
+#do not use dmenu
+#bindsym Mod1+d exec --no-startup-id dmenu_run -l 20 -nb #282828 -nf #918273
 
 # manually lock screen
 bindsym Control+Mod1+l exec i3lock
@@ -92,7 +96,7 @@ bindsym Mod1+v split v
 bindsym Mod1+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym Mod1+s layout stacking
+#bindsym Mod1+s layout stacking
 bindsym Mod1+w layout tabbed
 bindsym Mod1+e layout toggle split
 
@@ -118,17 +122,14 @@ bindsym Mod1+minus scratchpad show
 # assign workspace variables
 set $WS1 
 set $WS2 
-#set $WS1 URxvt
-#set $WS2 Chromium
-set $WS3 Sublime
-set $WS4 LibreOffice
-#set $WS5 5
-set $WS5 
-set $WS6 6
-set $WS7 7
-set $WS8 8
-set $WS9 9
-set $WS10 10
+set $WS3 
+set $WS4 
+set $WS5 Atom
+set $WS6 Office
+set $WS7 VII
+set $WS8 VIII
+set $WS9 IX
+set $WS10 X
 
 # switch to workspace
 bindsym mod1+1 workspace $WS1
@@ -158,14 +159,15 @@ bindsym mod1+Shift+0 move container to workspace $WS10
 
 for_window [class="URxvt"] floating enable,move absolute center
 #for_window [class="Chromium"] floating enable,move absolute center
-
-#floating enable
 for_window [title="File Operation Progress" class="Thunar"] floating enable
 for_window [window_role="pop-up"] floating enable,move absolute center
 
 #assign [instance="URxvt"] $WS1
-assign [class="Chromium"] $WS2
-assign [class="sublime"] $WS3
+assign [class="chromium"] $WS2
+assign [class="Firefox"] $WS3
+assign [class="thunar"] $WS4
+assign [class="atom"] $WS5
+assign [class="libreoffice"] $WS6
 
 # reload the configuration file
 bindsym Mod1+Shift+c reload
@@ -221,15 +223,8 @@ colors {
         status_command i3status
 }
 
-##
-##
-## MY ADDS BELOW
-##
-##
-
-# $mod+i loads chromium
-
 bindsym Mod1+i exec chromium --incognito
+bindsym Mod1+x exec tor-browser
 bindsym Mod1+z exec atom
 
 ## for all windows
@@ -260,21 +255,15 @@ set $id #606060
 #set $id #5E83F2
 set $ce $ceecee
 
-#		        border	background	text	indicator
+#		                    border	background	text	indicator
 
-client.focused		$gray1	$gray1		$tx	$bg
-client.unfocused	$bg	$bg		$ia	$id
-client.focused_inactive	$bg	$bg		$ac	$id
-client.urgent		$rd	$rd		$tx	$id
+client.focused		$gray1	$gray1		$tx	$gray1
+client.unfocused	$bg	$bg		$ia	$bg
+client.focused_inactive	$bg	$bg		$ac	$bg
+client.urgent		$rd	$rd		$tx	$bg
 
+hide_edge_borders both
 
-#######################################################################
-# automatically start i3-config-wizard to offer the user to create a
-# keysym-based config which used his favorite modifier (alt or windows)
-#
-# i3-config-wizard will not launch if there already is a config file
-# in ~/.i3/config.
-#
-# Please remove the following exec line:
-#######################################################################
-#exec i3-config-wizard
+exec_always feh --bg-scale /home/eyestrain/Photos/Backgrounds/aliens.png
+exec xautolock -time 10 -locker '~/.i3/i3lock.sh'
+exec urxvt
