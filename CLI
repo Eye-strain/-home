@@ -1,5 +1,5 @@
 #
-# command line cheat sheet September 12, 2015 21:43
+# command line cheat sheet November 4, 2015
 #
 
 # installing packages
@@ -125,8 +125,20 @@ cancel Canon_MX860_series-1 # will cancel job 1
 
 # copy from B to A while logged in to  B (push a file)
 scp /path/to/file username@a:/path/to/destination
+ex: scp /home/eyestrain/CLI eyestrain@Archy:~/.ssh/ 
 
 # copy from B to A while logged in to A (pull a file)
 scp username@b:/path/to/file /path/to/destination
+ex: scp eyestrain@Archy:~/CLI /home/eyestrain/
+ex 2: scp -P 55888 98.245.213.97:~/CLI /home/eyestrain/Downloads/
 
+## FreeBSD
+# 
+# 
+# upgrading packages (i.e., Pacman -Syyu)
+pkg upgrade
+
+# video mode
+vidcontrol -i mode # to get list of available modes
+vidcontrol MODE_270 # sets mode to 280
 
