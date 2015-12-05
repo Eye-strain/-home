@@ -1,5 +1,5 @@
 #
-# command line cheat sheet November 4, 2015
+# command line cheat sheet December 5, 2015
 #
 
 # installing packages
@@ -113,13 +113,14 @@ paccache -ruk0
 # just delete the file to enable the module
 
 # PRINTER
-# check print queue
 
-lpq -a
+http://localhost:631 # access CUPS admin page
 
-# clear print queue
+lpq -a # check print queue
 
-cancel Canon_MX860_series-1 # will cancel job 1
+cancel Canon_MX860_series-1 # will cancel job 1 
+
+sudo cupsenable Canon_MX860_series # reset the printer 
 
 ## copying files over ssh
 
