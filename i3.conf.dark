@@ -1,0 +1,221 @@
+#
+# ~/.i3/config
+#
+
+font pango:terminus 11
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up l
+set $down k
+set $left j
+set $right semicolon
+
+# use Mouse+Mod1 to drag floating windows to their wanted position
+floating_modifier Mod1
+
+# focus does not follow mouse
+focus_follows_mouse no
+
+# start programs
+bindsym Mod1+Return exec urxvt
+bindsym Mod1+i exec chromium --incognito
+bindsym Mod1+x exec tor-browser
+bindsym Mod1+z exec atom
+# start rofi (a program launcher)
+bindsym Mod1+d exec --no-startup-id rofi -show run -font "terminus 11" -fg "#ebdbb2" -bg "#282828" -bc "#918273" -hlbg "#918273" -hlfg "#282828" -lines 10 -width 75
+bindsym Mod1+s exec --no-startup-id rofi -show ssh -font "terminus 11" -fg "#ebdbb2" -bg "#282828" -bc "#918273" -hlbg "#918273" -hlfg "#282828" -lines 10 -width 75
+
+# kill focused window
+bindsym Mod1+Shift+q kill
+
+# manually lock screen
+#bindsym Control+Mod1+l exec i3lock
+bindsym Control+Mod1+l exec ~/.i3/i3lock.sh
+
+# change focus
+bindsym Mod1+$left focus left
+bindsym Mod1+$down focus down
+bindsym Mod1+$up focus up
+bindsym Mod1+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod1+Left focus left
+bindsym Mod1+Down focus down
+bindsym Mod1+Up focus up
+bindsym Mod1+Right focus right
+
+# move focused window
+bindsym Mod1+Shift+$left move left
+bindsym Mod1+Shift+$down move down
+bindsym Mod1+Shift+$up move up
+bindsym Mod1+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod1+Shift+Left move left
+bindsym Mod1+Shift+Down move down
+bindsym Mod1+Shift+Up move up
+bindsym Mod1+Shift+Right move right
+
+# split in horizontal or vertical orientation
+bindsym Mod1+h split h
+bindsym Mod1+v split v
+
+# enter fullscreen mode for the focused container
+bindsym Mod1+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+#bindsym Mod1+s layout stacking
+bindsym Mod1+w layout tabbed
+bindsym Mod1+e layout toggle split
+
+# toggle tiling / floating
+bindsym Mod1+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym Mod1+space focus mode_toggle
+
+# focus the parent container
+bindsym Mod1+a focus parent
+
+# focus the child container
+#bindsym Mod1+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym Mod1+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym Mod1+minus scratchpad show
+
+# assign workspace variables
+set $WS1 
+set $WS2 
+set $WS3 
+set $WS4 
+set $WS5 Atom
+set $WS6 Office
+set $WS7 VII
+set $WS8 VIII
+set $WS9 IX
+set $WS10 X
+
+# switch to workspace
+bindsym mod1+1 workspace $WS1
+bindsym mod1+2 workspace $WS2
+bindsym mod1+3 workspace $WS3
+bindsym mod1+4 workspace $WS4
+bindsym mod1+5 workspace $WS5
+bindsym mod1+6 workspace $WS6
+bindsym mod1+7 workspace $WS7
+bindsym mod1+8 workspace $WS8
+bindsym mod1+9 workspace $WS9
+bindsym mod1+0 workspace $WS10
+
+# move focused container to workspace
+bindsym mod1+Shift+1 move container to workspace $WS1
+bindsym mod1+Shift+2 move container to workspace $WS2
+bindsym mod1+Shift+3 move container to workspace $WS3
+bindsym mod1+Shift+4 move container to workspace $WS4
+bindsym mod1+Shift+5 move container to workspace $WS5
+bindsym mod1+Shift+6 move container to workspace $WS6
+bindsym mod1+Shift+7 move container to workspace $WS7
+bindsym mod1+Shift+8 move container to workspace $WS8
+bindsym mod1+Shift+9 move container to workspace $WS9
+bindsym mod1+Shift+0 move container to workspace $WS10
+
+## float
+
+for_window [class="URxvt"] floating enable,move absolute center
+#for_window [class="Chromium"] floating enable,move absolute center
+for_window [title="File Operation Progress" class="Thunar"] floating enable
+for_window [window_role="pop-up"] floating enable,move absolute center
+
+## assign programs to workspaces
+
+#assign [instance="URxvt"] $WS1
+assign [class="chromium"] $WS2
+assign [class="Firefox"] $WS3
+assign [class="thunar"] $WS4
+assign [class="atom"] $WS5
+assign [class="libreoffice"] $WS6
+
+# reload the configuration file
+bindsym Mod1+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym Mod1+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym Mod1+r mode "resize"
+
+## for all windows
+for_window [class="^.*"] border pixel 2
+
+## URxvt always floats
+for_window [class="URxvt"] floating enable
+
+## COLORS
+
+set $fg #ebdbb2
+set $bg #282828
+set $gray #918273
+set $pri #458588
+set $red #e89393
+
+# window colors
+#		                                 border	background	text	indicator
+
+client.focused		              $fg	    $fg		            $fg    $fg
+client.unfocused	            $bg	     $bg	            $bg   $bg
+client.focused_inactive	     $bg	  $bg		         $bg	$bg
+client.urgent		               $red	    $red	          $bg	 $fg
+
+hide_edge_borders both
+
+bar {
+
+       position bottom
+       status_command i3status -c ~/.i3/i3status.conf
+       strip_workspace_numbers yes
+
+       colors {
+
+                background $bg
+	            statusline $fg
+	            separator  $gray
+
+#		                                       border        middle     text
+
+	            focused_workspace  $fg             $pri          $fg
+	            inactive_workspace  $bg            $bg          $gray
+
+}
+
+}
+
+exec_always feh --bg-scale /home/eyestrain/Photos/Backgrounds/hippo.png
+exec xautolock -time 10 -locker '~/.i3/i3lock.sh'
+exec urxvt

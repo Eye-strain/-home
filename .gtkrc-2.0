@@ -5,6 +5,8 @@
 # sets default gtk2 theme
 
 gtk-theme-name = "Adwaita-Dark"
-gtk-font-name = "Sans 10"
+#gtk-theme-name = "Adwaita"
+#gtk-theme-name = "Mona"
+gtk-font-name = "Sans 9"
 gtk-application-prefer-dark-theme = true
 
