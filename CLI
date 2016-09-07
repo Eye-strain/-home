@@ -65,6 +65,10 @@ find ~ -type f -name "*.txt" -exec rm -f {} \; (delete all found files)
 
 ln -s /path/to/where/file/located/filename.sh filename.sh (will create link "filename.sh" in present directory pointing to file in path)
 
+# copy a symbolic link
+
+cp -R /path/of/source/. /path/to/destination/ --preserve=links
+ 
 # screen brightness
 
 xrandr --output eDP --brightness <value from 0.0 to 1.0>
@@ -100,6 +104,10 @@ curl -s icanhazip.com
 # scan for networks
 sudo iw wlp2s0 scan | grep -i ssid --color
 
+# connect with networkmanager
+nmcli dev wifi connect <name> password <password>
+nmcli dev wifi connect <name> password <password> iface wlp2s0 [profile name]
+
 # updating mirrorlist
 # aliased to "reflector"
 reflector --verbose --country 'United States' -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist
@@ -121,6 +129,10 @@ lpq -a # check print queue
 cancel Canon_MX860_series-1 # will cancel job 1 
 
 sudo cupsenable Canon_MX860_series # reset the printer 
+
+run /usr/sbin/cups-genppupdates
+sudo systemctl restart org.cups.cupsd.service
+
 
 ## copying files over ssh
 

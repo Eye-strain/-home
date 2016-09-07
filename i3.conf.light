@@ -3,7 +3,7 @@
 #
 
 #font pango:terminus 11
-font pango:DejavuSansMono 9
+font pango:Source Code Pro 10
 
 ## COLORS
 
@@ -32,8 +32,8 @@ bindsym Mod1+i exec chromium --incognito
 bindsym Mod1+x exec tor-browser
 bindsym Mod1+z exec atom
 # start rofi (a program launcher)
-bindsym Mod1+d exec --no-startup-id rofi -show run -font "DejavuSansMono 10" -fg "#282828" -bg "#ffffff" -bc "#282828" -hlbg "#282828" -hlfg "#ffffff" -lines 10 -width 75
-bindsym Mod1+s exec --no-startup-id rofi -show ssh -font "DejavuSansMono 10" -fg "#282828" -bg "#ffffff" -bc "#282828" -hlbg "#282828" -hlfg "#ffffff" -lines 10 -width 75
+bindsym Mod1+d exec --no-startup-id rofi -show run -font "DejavuSansMono 10" -fg "#282828" -bg "#ffffff" -bc "#282828" -hlbg "#282828" -hlfg "#ffffff" -lines 10 -width 30
+bindsym Mod1+s exec --no-startup-id rofi -show ssh -font "DejavuSansMono 10" -fg "#282828" -bg "#ffffff" -bc "#282828" -hlbg "#282828" -hlfg "#ffffff" -lines 10 -width 30
 
 # kill focused window
 bindsym Mod1+Shift+q kill
@@ -218,5 +218,5 @@ bar {
 }
 
 exec_always feh --bg-scale /home/eyestrain/Photos/Backgrounds/architecture.jpg
-exec xautolock -time 10 -locker '~/.i3/i3lock.sh'
+#exec xautolock -time 10 -locker '~/.i3/i3lock.sh'
 #exec urxvt

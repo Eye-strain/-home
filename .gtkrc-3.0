@@ -5,6 +5,7 @@
 # sets default gtk3 theme
 
 gtk-theme-name = "Adwaita-Dark"
+gtk-theme-name = "Adwaita"
 #gtk-theme-name = "Mona"
 gtk-font-name = "Sans 9"
 
@@ -22,5 +23,5 @@ gtk-xft-antialias=1
 gtk-xft-hinting=1
 gtk-xft-hintstyle=hintfull
 gtk-xft-rgba=rgb
-gtk-application-prefer-dark-theme = true
+#gtk-application-prefer-dark-theme = true
 

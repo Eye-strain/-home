@@ -13,9 +13,10 @@ urxvt*letterSpace: -1
 urxvt*scrollTtyOutput: true
 urxvt*geometry: 80x30
 
+urxvt*font: xft:Source Code Pro:size=10
 !urxvt*font: xft:terminus:size=11
 !urxvt*font: xft:GohuFont:size=14
-urxvt*font: xft:DejavuSansMono:size=9
+!urxvt*font: xft:DejavuSansMono:size=9
 
 ! colors
 URxvt.cursorColor:  #282828

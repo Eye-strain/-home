@@ -46,7 +46,7 @@
 
 ## Constantly display the cursor position in the statusbar.  Note that
 ## this overrides "quickblank".
-# set constantshow
+set constantshow
 ## (The old form, 'const', is deprecated.)
 
 ## Use cut-to-end-of-line by default.
@@ -96,7 +96,7 @@ set mouse
 # set nonewlines
 
 ## Don't wrap text at all.
-# set nowrap
+set nowrap
 
 ## Set operating directory.  nano will not read or write files outside
 ## this directory and its subdirectories.  Also, the current directory
@@ -162,7 +162,7 @@ set softwrap
 set tabsize 4
 
 ## Convert typed tabs to spaces.
-# set tabstospaces
+set tabstospaces
 
 ## Save automatically on exit; don't prompt.
 # set tempfile
