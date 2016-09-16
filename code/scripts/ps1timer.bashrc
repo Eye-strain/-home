@@ -1,4 +1,3 @@
-#!/bin/bash
 
 d(){ cd `devdir $1`; }
   
